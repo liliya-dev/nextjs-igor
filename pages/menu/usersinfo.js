@@ -186,7 +186,7 @@ export async function getServerSideProps(ctx) {
       },
     };
   } catch (e) {
-    console.log(e.message, 6787)
+    console.log(e.message, 67872)
     return {
       notFound: true,
     };
