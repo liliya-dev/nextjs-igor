@@ -174,10 +174,11 @@ export default function userinfo({ pass }) {
     </Layout>
   );
 }
-export async function getStaticProps() {
-  console.log(process.env.API_HOST)
+export async function getServerSideProps(ctx) {
+  console.log(ctx.req.headers.host)
+  const origin = 'http://localhost:3001'
   try {
-    const getApi = await axios.get(`${process.env.API_HOST}socials`);
+    const getApi = await axios.get(`${origin}${process.env.API_HOST}socials`);
     const pass = getApi.data;
     return {
       props: {
@@ -185,6 +186,7 @@ export async function getStaticProps() {
       },
     };
   } catch (e) {
+    console.log(e.message, 6787)
     return {
       notFound: true,
     };
